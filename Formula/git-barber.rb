@@ -1,7 +1,6 @@
 class GitBarber < Formula
   desc "Trim stale merged git branches (classic + squash merges), with a TUI"
   homepage "https://github.com/rekurt/git-barber"
-  version "0.3.0"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
