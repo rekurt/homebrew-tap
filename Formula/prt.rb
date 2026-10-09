@@ -3,7 +3,6 @@ require "json"
 class Prt < Formula
   desc "Inspect network ports, processes and SSH tunnel health in the terminal"
   homepage "https://rekurt.github.io/prt/"
-  version "0.6.0"
   license "MIT"
 
   on_macos do
