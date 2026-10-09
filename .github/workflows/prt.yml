@@ -1,0 +1,29 @@
+name: Verify prt formula
+
+on:
+  push:
+    paths: ["Formula/prt.rb", ".github/workflows/prt.yml"]
+  pull_request:
+    paths: ["Formula/prt.rb", ".github/workflows/prt.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    name: Install (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, macos-15-intel, ubuntu-22.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@1f8e202ffddf94def7f42f6fa3a482e821489f9c
+        with:
+          stable: true
+      - name: Install and test published formula
+        run: |
+          brew install rekurt/tap/prt
+          brew test rekurt/tap/prt
